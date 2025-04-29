@@ -4,12 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WHYSTZAP</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.8.1/socket.io.js"></script>
 </head>
 
 <body>
 
-    <h1> League of Legends, Call of Duty Black OPS II, Mortal Kombat XI</h1>
-    <h2>Voa mlk</h2>
+    <div class="container">
+
+        <!-- <h1>##### APP DE CHAT MONGODB #####</h1> -->
+        <h1>##### WHYSTZAP #####</h1>
+
+        <form id="chat">
+
+            <input type="text" name="username" id="username" placeholder="Digite seu nome de usuário: ">
+
+            <br/>
+            
+            <input multiple type="text" name="message" id="message" placeholder="Insira sua mensagem: ">
+            
+            <br/>
+
+            <button type="submit">Enviar</button>
+
+            <div class="messages"></div>
+
+        </form>
+
+
+    </div>
+    
+    <script src="socket.io/socket.io.js"></script>
+
+    <script>
+
+        //Conexão com o socket.io do backend
+        const socket = io('http://localhost:3000')
+
+        //Captura os dados de usuário e da mensagem do usuario
+        $('#chat').submit(function(event){
+
+            event.preventDefault();
+            // alert("Deu certo")
+
+            //Recupera os dados do usuario e mensagem:
+            let usuário = $('input[name=username]').val();
+            let mensagem = $('input[name=message]').val();
+
+            console.log("user" + usuário );
+            console.log("mensagem" + mensagem)
+
+            //Data e hora do envio da mensagem
+        });
+
+    </script>
 
 </body>
 
